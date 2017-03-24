@@ -10,10 +10,4 @@ public class Solution {
         return distance;
         
     }
-
-    public static void main(String[] args){
-        Solution s = new Solution();
-        System.out.println(s.hammingDistance(3,100));
-
-    }
 }
