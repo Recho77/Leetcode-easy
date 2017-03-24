@@ -4,25 +4,8 @@
 public class Solution {
     public int hammingDistance(int x, int y) {
        
-       //将两个整型转化为等长的二进制表示
-        int bigger = (x >= y)? x : y;
-        int smaller = (x >= y)? y : x;
-        String biggerBinary = Integer.toBinaryString(bigger);
-        String smallerBinary = Integer.toBinaryString(smaller);
-        int len = biggerBinary.length();
-        
-        StringBuffer sb = new StringBuffer(smallerBinary);
-        sb.reverse();
-  
-        while(sb.length() < len){sb.append('0');}
-        smallerBinary = sb.reverse().toString();
-
-        
-        //逐位比较统计
-        int distance = 0;
-        for(int i = 0; i < len; i++){
-            if (biggerBinary.charAt(i) != smallerBinary.charAt(i)) distance++;
-        }
+      int XOR = x^y;
+      int distance = Integer.bitCount(XOR);
         
         return distance;
         
