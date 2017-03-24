@@ -5,14 +5,8 @@
 
 public class Solution {
     public int findComplement(int num) {
-        
-        String binaryNum = Integer.toBinaryString(num);
-        int len = binaryNum.length();
-        
-        StringBuffer padding = new StringBuffer();
-        while(padding.length() < len) padding.append('1');
-        int intPadding = Integer.valueOf(padding.toString(), 2);
-        
+        //与num位数相等的全1填充
+        int intPadding  = (Integer.highestOneBit(num) << 1 ) - 1;
         int complement = num ^ intPadding;
         
         return complement;
