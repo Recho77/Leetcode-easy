@@ -18,9 +18,9 @@ public class Solution {
         for(int i = 0; i < words.length; i++) wordsLower[i] = words[i].toLowerCase();
         
         for (int k = 0; k < line.length; k++){
-            for(int i = 0; i < words.length; i++){ //iterate the input string array
-                  //iterate this string, if all characters are in line1, append this string into result
-                   if (line[k].contains(String.valueOf(wordsLower[i].charAt(0)))) {  
+            for(int i = 0; i < words.length; i++){ 
+                  //iterate this string, if all characters are in line[k], add this string into result
+                   if (line[k].contains(String.valueOf(wordsLower[i].charAt(0)))) {    //note: String.contains(TYPE:CharSequence)
                     boolean state = true;
                     for(int j = 1; j < wordsLower[i].length(); j++){
                         if(!(line[k].contains(String.valueOf(wordsLower[i].charAt(j))))) {
