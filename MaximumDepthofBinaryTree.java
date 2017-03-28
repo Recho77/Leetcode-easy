@@ -10,30 +10,30 @@
  *     TreeNode(int x) { val = x; }
  * }
  */
- 
 
+ //BFS algorithm
+ //In this quiz, using LinkedList instead of ArrayDeque for Deque
+ //Though ArrayDeque generally performs better than LinkedList,
+ //LinkedList supports null elements, whereas ArrayDeque does not
+ 
 public class Solution {
     public int maxDepth(TreeNode root) {
-       //BFS algorithm
-       if (root == null) return 0;
+        int depth = 0;
+        Deque <TreeNode> queue = new LinkedList<TreeNode>();
+        TreeNode current;
         
-	    Deque<TreeNode> stack = new LinkedList<TreeNode>();
-	
-	    stack.push(root);
-	    int count = 0;
-	
-	    while (!stack.isEmpty()) {
-		    int size = stack.size();
-	    	while (size-- > 0) {
-			    TreeNode cur = stack.pop();
-			    if (cur.left != null)
-				    stack.addLast(cur.left);
-			    if (cur.right != null)
-				    stack.addLast(cur.right);
-	    	}
-		    count++;
-
-	    }
-	return count;
+        if(root == null) return 0;
+        queue.offerLast(root);
+        
+        while(queue.size() > 0){
+            int size = queue.size();
+            for(int i = 0; i < size; i++){
+                current = queue.pollFirst();
+                if(current.left != null) queue.offerLast(current.left);
+                if(current.right != null) queue.offerLast(current.right);
+                }
+            depth++;
+            }
+            return depth;
     }
 }
