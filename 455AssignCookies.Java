@@ -12,17 +12,19 @@ public class Solution {
         Arrays.sort(s);
         Arrays.sort(g);
         
+        int i = 0;
+        int j = 0;
         int count = 0;
         
-        for(int i = s.length - 1; i >= 0; i--){
-            for(int j = g.length - 1; j >= 0; j--){
-                if(s[i] >= g[j]) {
-                    count++;
-                    g[j] = Integer.MAX_VALUE; 
-                    break;
-                }
-            }
-        }
+       while(i < s.length && j < g.length){
+         if(g[j] <= s[i]){
+             i++;
+             j++;
+             count++;
+         }else{
+             j++;
+         }
+       }
         
         return count;
     }
